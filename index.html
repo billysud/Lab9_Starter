@@ -6,6 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lab 9</title>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "c4bbfcbf85a840e7823ff6be4861a6f0"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+                        
 
   <style>
     button {
@@ -102,6 +110,168 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    let count = 0;
+    let btnCount = 0;
+    let log = errorBtns[btnCount];
+    log.addEventListener("click", () => {
+      console.log("Console Log Demo");
+    });
+    btnCount++;
+
+    let err = errorBtns[btnCount];
+    err.addEventListener("click", () => {
+      console.error("Console Error Demo");
+      count++;
+    });
+    btnCount++;
+
+    let cnt = errorBtns[btnCount];
+    cnt.addEventListener("click", () => {
+      console.count("Count Button");
+    });
+    btnCount++;
+
+    let wrn = errorBtns[btnCount];
+    wrn.addEventListener("click", () => {
+      console.warn("Console Warn Button");
+    });
+    btnCount++;
+
+    let asrt = errorBtns[btnCount];
+    asrt.addEventListener("click", () => {
+      count++;
+      const y = count + 1;
+      const reason = "The number does not equal " + y;
+      console.assert(y < count, {count,y, reason});
+    });
+    btnCount++;
+
+    let clr = errorBtns[btnCount];
+    clr.addEventListener("click", () => {
+      console.clear("Console was cleared");
+    });
+    btnCount++;
+
+    let dir = errorBtns[btnCount];
+    dir.addEventListener("click", () => {
+      console.dir(document.querySelectorAll("button"));
+    });
+    btnCount++;
+
+    let dirxml = errorBtns[btnCount];
+    dirxml.addEventListener("click", () => {
+      console.dirxml(document.querySelectorAll("button"));
+    });
+    btnCount++;
+
+    let grps = errorBtns[btnCount];
+    grps.addEventListener("click", () => {
+      console.group("console.group");
+    });
+    btnCount++;
+
+    let grpe = errorBtns[btnCount];
+    grpe.addEventListener("click", () => {
+      console.groupEnd("console.group");
+    });
+    btnCount++;
+
+    let tab = errorBtns[btnCount];
+    tab.addEventListener("click", () => {
+      let classes = [
+        {name: "Software Engineering", number: "110"},
+        {name: "Design and Analysis of Algorithms", number: "101"},
+        {name:"Teach Computation Digital World", number: "124AR"},
+        {name:"Teach Computation Thinking", number: "124BR"},
+      ]
+      console.table(classes);
+    });
+    btnCount++;
+    
+    let times = errorBtns[btnCount];
+    times.addEventListener("click", () => {
+      var time = console.time();
+    });
+    btnCount++;
+
+    let timee = errorBtns[btnCount];
+    timee.addEventListener("click", () => {
+      console.timeEnd();
+    });
+    btnCount++;
+
+    let trc = errorBtns[btnCount];
+    trc.addEventListener("click", () => {
+      const deepest = () => {deeper();};
+      const deeper = () => {deep();};
+      const deep = () => {console.trace();};
+      deepest();
+      
+    });
+    btnCount++;
+
+    let glb = errorBtns[btnCount];
+    glb.addEventListener("click", () => {
+      count++;
+      console.log("Sadly an Error has happened my friend");
+      return boom; 
+    });
+    btnCount++;
+
+
+    try{
+      console.log("This will not be an error and should show");
+    }
+    catch(error){
+      console.log("This should not show");
+    }
+
+    try{
+      console.error("This will be an error");
+    }
+    catch(err){
+      console.log("This will be an error and should show");
+    }
+
+    class ClassError extends Error{
+      constructor(message){
+        super(message);
+        this.class = "ClassError";
+      }
+    }
+
+    function readClass(input){
+      let clase = JSON.parse(input);
+
+      if(!clase.class){
+        throw new ClassError("No field: class");
+      }
+      if(!clase.number){
+        throw new ClassError("No field: number");
+      }
+      return clase;
+    }
+
+    try{
+      let CSE_110 = readClass('{"class": "Software Engineering", "number": "110"}');
+    }
+    catch(err){
+      console.log("Invalid data " + err.message);
+    }
+    try{
+      let CSE_101 = readClass('{"number": "101"}');
+    }
+    catch(err){
+      console.log("Invalid data " + err.message);
+    } 
+    try{
+      let EDS_124AR = readClass('{"class": "Teach Computation Digital World"}');
+    }
+    catch(err){
+      console.log("Invalid data " + err.message);
+    }
+
+    console.log(TrackJS.track('Testing TrackJS!'));
   </script>
 </body>
 
