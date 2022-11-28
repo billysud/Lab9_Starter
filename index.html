@@ -154,13 +154,13 @@
 
     let dir = errorBtns[btnCount];
     dir.addEventListener("click", () => {
-      console.dir(document.querySelectorAll("button"));
+      console.dir(dir);
     });
     btnCount++;
 
     let dirxml = errorBtns[btnCount];
     dirxml.addEventListener("click", () => {
-      console.dirxml(document.querySelectorAll("button"));
+      console.dirxml(dirxml);
     });
     btnCount++;
 
@@ -224,6 +224,8 @@
     }
     catch(error){
       console.log("This should not show");
+    } finally {
+      console.log("Finally");
     }
 
     try{
